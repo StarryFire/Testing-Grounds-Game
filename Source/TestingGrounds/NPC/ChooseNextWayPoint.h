@@ -18,9 +18,9 @@ class TESTINGGROUNDS_API UChooseNextWayPoint : public UBTTaskNode
 
 protected:
 	UPROPERTY(EditAnywhere, Category = "BlackBoard")
-		FBlackboardKeySelector nextWayPointIndex;
+		FBlackboardKeySelector NextPatrolPointIndex;
 
 	UPROPERTY(EditAnywhere, Category = "BlackBoard")
-		FBlackboardKeySelector waypoint;
+		FBlackboardKeySelector PatrolPoint;
 	
 };

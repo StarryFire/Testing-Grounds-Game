@@ -11,16 +11,19 @@ EBTNodeResult::Type UChooseNextWayPoint::ExecuteTask(UBehaviorTreeComponent& Own
 {
 
 	auto blackBoardComp = OwnerComp.GetBlackboardComponent();
-	auto index = blackBoardComp->GetValueAsInt(nextWayPointIndex.SelectedKeyName);
+	auto index = blackBoardComp->GetValueAsInt(NextPatrolPointIndex.SelectedKeyName);
 	auto patrolGuardController = OwnerComp.GetAIOwner();
 	auto patrolRouteComponent = patrolGuardController->GetPawn()->FindComponentByClass<UPatrolRouteComponent>();
 
 	if (ensure(patrolRouteComponent != NULL))
 	{
-		auto patrolPoints = patrolRouteComponent->getPatrolPoints();
-		blackBoardComp->SetValueAsObject(waypoint.SelectedKeyName, patrolPoints[index]);
-		index = (index + 1) % patrolPoints.Num();
-		blackBoardComp->SetValueAsInt(nextWayPointIndex.SelectedKeyName, index);
+		auto PatrolPoints = patrolRouteComponent->getPatrolPoints();
+		if ( PatrolPoints.Num() > 0 )
+		{
+			blackBoardComp->SetValueAsObject(PatrolPoint.SelectedKeyName, PatrolPoints[index]);
+			index = (index + 1) % PatrolPoints.Num();
+			blackBoardComp->SetValueAsInt(NextPatrolPointIndex.SelectedKeyName, index);
+		}
 	}
 	
 	//UE_LOG(LogTemp, Warning, TEXT("nextWayPointIndex : %d"), index);
