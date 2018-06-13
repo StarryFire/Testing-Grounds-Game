@@ -28,6 +28,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+	UFUNCTION(BlueprintCallable, Category = "Fire")
 	void OnFire();
 
 	// Called every frame
