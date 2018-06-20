@@ -57,7 +57,7 @@ void AFirstPersonCharacter::BeginPlay()
 		// Bind fire event
 		FP_InputComponent->BindAction("Fire", IE_Pressed, FP_Gun, &AGun::OnFire);
 
-		FP_Gun->AnimInstance = Mesh1P->GetAnimInstance();
+		FP_Gun->AnimInstance_FP = Mesh1P->GetAnimInstance();
 	}
 }
 //////////////////////////////////////////////////////////////////////////

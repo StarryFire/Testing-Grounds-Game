@@ -69,11 +69,12 @@ void AGun::OnFire()
 	}
 
 	// try and play a firing animation if specified
-	if (FireAnimation != NULL)
+	if (FireAnimation_FP && FireAnimation_TP)
 	{
-		if (AnimInstance != NULL)
+		if (AnimInstance_FP && AnimInstance_TP)
 		{
-			AnimInstance->Montage_Play(FireAnimation, 1.f);
+			AnimInstance_FP->Montage_Play(FireAnimation_FP, 1.f);
+			AnimInstance_TP->Montage_Play(FireAnimation_TP, 1.f);
 		}
 	}
 }

@@ -14,10 +14,6 @@ class TESTINGGROUNDS_API AGun : public AActor
 	/** Gun mesh: 1st person view (seen only by self) */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 	class USkeletalMeshComponent* FP_Gun;
-
-	/** Location on gun mesh where projectiles should spawn. */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	class USceneComponent* FP_MuzzleLocation;
 	
 public:	
 	// Sets default values for this actor's properties
@@ -48,7 +44,15 @@ public:
 
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class UAnimMontage* FireAnimation;
+	class UAnimMontage* FireAnimation_FP;
 
-	class UAnimInstance* AnimInstance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	class UAnimMontage* FireAnimation_TP;
+
+	/** Location on gun mesh where projectiles should spawn. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mesh)
+	class USceneComponent* FP_MuzzleLocation;
+
+	class UAnimInstance* AnimInstance_FP = NULL;
+	class UAnimInstance* AnimInstance_TP = NULL;
 };
